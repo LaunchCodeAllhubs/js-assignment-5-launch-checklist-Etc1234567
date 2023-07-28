@@ -2,6 +2,20 @@
 
 window.addEventListener("load", function() {
 
+    let form = document.querySelector("form");
+    form.addEventListener("formSubmit", function(event) {
+         
+        let pilot = document.querySelector("pilotName");
+         let copilot = document.querySelector("copilotName");
+         let fuel = document.querySelector("fuelLevel");
+         let cargoMass = document.querySelector("cargoMass");
+
+         if (.value === "" || .value === "") {
+            alert("All fields are required!");
+         }    
+    });
+});
+
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
    let listedPlanetsResponse;
