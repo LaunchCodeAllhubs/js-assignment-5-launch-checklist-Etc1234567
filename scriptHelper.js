@@ -1,6 +1,12 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
+let pilot = document.getElementById("pilotName");
+let copilot = document.getElementById("copilotName");
+let fuelLevel = document.getElementById("fuelLevel");
+let cargoLevel = document.getElementById("cargoMass");
+let response = "";
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
    /*
@@ -17,31 +23,37 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    let pilot = document.querySelector("input[name=pilotName]");
-         let copilot = document.querySelector("input[name=copilotName]");
-         let fuelLevel = document.querySelector("input=[name=fuelLevel]");
-         let cargoLevel = document.querySelector("input=[name=cargoMass]");
-
+    
     if (pilot.value === "" || copilot.value === "" || fuelLevel.value === "" || cargoLevel.value === "")  {
-        return "Empty";
-        //alert("All fields are required!");
+        let response = "Empty";
+        return response;
      }   
     
-     if (isNaN(fuelLevel.value) || isNaN(cargoLevel.value) || isNaN(pilot.value) || isNaN(copilot.value)) {
-        return "Not a Number";
+    else if (isNaN(fuelLevel.value) || isNaN(cargoLevel.value)) {
+        let response = "Not a Number";
+        return response;
      }
-     else if (!isNaN(fuelLevel.value) || !isNaN(cargoLevel.value) || !isNaN(pilot.value) || !isNaN(copilot.value)) {
-        return "Is a number";
+     else if (isNaN(pilot.value) === false || isNaN(copilot.value)=== false) {
+        let response = "Is a number";
+        return response;
      }
-
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let form = document.querySelector("form");
-    form.addEventListener("submit", function(event) {
-         validateInput();
-    });
-};
+         
+    validateInput(pilot, copilot, fuelLevel, cargoLevel);
+        //  if (response = "Empty") {
+        //     alert("All fields are required!");
+        //     //event.preventDefault();
+        //  }
+
+         
+    }
+
+document.addEventListener("click", formSubmission) 
+    console.log(response);
+
+
 
 async function myFetch() {
     let planetsReturned;
