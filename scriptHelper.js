@@ -11,19 +11,21 @@ let fuelStatus = document.getElementById("fuelStatus");
 let launchStatus = document.getElementById("launchStatus");
 let cargoStatus = document.getElementById("cargoStatus");
 
+let missionTarget = document.getElementById("missionTarget");
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
-   /*
+   missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
-                    <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
+                    <li>Name: ${planet.name} </li>
+                    <li>Diameter: ${planet.diameter} </li>
+                    <li>Star: ${planet.star} </li>
+                    <li>Distance from Earth: ${planet.distance} </li>
+                    <li>Number of Moons: ${planet.moons} </li>
                 </ol>
-                <img src="">
-   */
+                <img src="${planet.image}">
+   `;
 }
 
 function validateInput(testInput) {
@@ -97,6 +99,9 @@ async function myFetch() {
 }
 
 function pickPlanet(planets) {
+    let index = Math.floor(Math.random() * (planets.length));
+    let planet = planets[index];
+    return planet;
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
