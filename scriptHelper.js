@@ -30,70 +30,65 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
     
-    if (pilotInput.value === "" || copilotInput.value === "" || fuelLevelInput.value === "" || cargoLevelInput.value === "")  {
+    if (testInput === "" || testInput === "" || testInput === "" || testInput === "")  {
         let response = "Empty";
-        return response;
      }   
     
-    else if (isNaN(fuelLevelInput.value) || isNaN(cargoLevelInput.value)) {
+    else if (isNaN(testInput) || isNaN(testInput)) {
         let response = "Not a Number";
-        return response;
      }
-     else if (!isNaN(pilotInput.value) || !isNaN(copilotInput.value)) {
+
+     else if (!isNaN(testInput) || !isNaN(testInput)) {
         let response = "Is a number";
-        return response;
      }
 
-     else if (fuelLevelInput.value < 10000){
-        fuelLevel.innerHTML= `${fuelLevelInput.value}`;
-        faultyItems.style.visibility = "visible";
-        fuelStatus.innerHTML= "Insufficient fuel for launch.";
-        launchStatus.style.color= "red";
-        launchStatus.innerHTML= "<h2> Shuttle not ready for launch. </h2>"
-     }
+            if (response === "Empty") {
+            window.alert("All fields are required!");
+            event.preventDefault();
+            }
 
-     else if (cargoLevelInput.value > 10000){
-        cargoLevel.innerHTML= `${cargoLevelInput.value}`;
-        faultyItems.style.visibility = "visible";
-        cargoStatus.innerHTML= "Mass is too high for takeoff.";
-        launchStatus.style.color= "#C7254E";
-        launchStatus.innerHTML= "<h2> Shuttle not ready for launch. </h2>";
-     }
+            if (response === "Not a Number") {
+            window.alert("Please enter a number for Fuel Level or Cargo Mass.");
+            event.preventDefault();
+            }
+
+            if (response === "Is a Number") {
+            window.alert("Please enter a name for the Pilot and Copilot.");
+            event.preventDefault();
+             }
+    return testInput; 
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-         
-   validateInput(pilotInput.value, copilotInput.value, fuelLevelInput.value, cargoLevelInput.value);
-          
-    if (response === "Empty") {
-             alert("All fields are required!");
-             event.preventDefault();
-            }
-    
-    if (response === "Not a Number") {
-        alert("Please enter a number for Fuel Level or Cargo Mass.");
-        event.preventDefault();
-            }
 
-    if (response === "Is a Number") {
-        alert("Please enter a name for the Pilot and Copilot.");
-        event.preventDefault();
-            }
+if (fuelLevelInput.value < 10000){
+     fuelLevel.innerHTML= `${fuelLevelInput.value}`;
+     faultyItems.style.visibility = "visible";
+     fuelStatus.innerHTML= "Insufficient fuel for launch.";
+     launchStatus.style.color= "red";
+     launchStatus.innerHTML= "<h2> Shuttle not ready for launch. </h2>"
+    }
 
+if (cargoLevelInput.value > 10000){
+    cargoLevel.innerHTML= `${cargoLevelInput.value}`;
     faultyItems.style.visibility = "visible";
+    cargoStatus.innerHTML= "Mass is too high for takeoff.";
+    launchStatus.style.color= "#C7254E";
+    launchStatus.innerHTML= "<h2> Shuttle not ready for launch. </h2>";
+        }
+   
     pilotStatus.innerHTML= `<li> ${pilotInput.value} Ready </li>`;
-    copilotStatus.innerHTML= `<li> ${copilotInput.value} Ready </li>`;
-
+    copilotStatus.innerHTML= `<li> ${copilotInput.value} Ready </li>`; 
     launchStatus.style.color= "#419F6A";
     launchStatus.innerHTML = "<h2> Shuttle is ready for launch. </h2>";
-         
     }
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
-        });
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        return response.json();
+    });
 
     return planetsReturned;
 }

@@ -2,17 +2,16 @@ const { formSubmission, addDestinationInfo } = require("./scriptHelper");
 
 // Write your JavaScript code here!
 const form = document.getElementById("testForm");
-let pilotStatus = document.getElementById("pilotStatus");
-let copilotStatus = document.getElementById("copilotStatus");
-
 
 window.addEventListener("load", function() { 
     
+    console.log("Hello, everyone!");
+
     form.addEventListener("submit", function(event) {
-       console.log("Hello, everyone!")
-        validateInput();
-        formSubmission();
+       
         
+       //validateInput(pilotInput.value, copilotInput.value, fuelLevelInput.value, cargoLevelInput.value);
+       // formSubmission(document, list, pilotInput.value, copilotInput.value, fuelLevelInput.value, cargoLevelInput.value);
     });
 });
 
