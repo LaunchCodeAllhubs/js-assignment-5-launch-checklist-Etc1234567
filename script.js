@@ -1,17 +1,17 @@
-const { formSubmission, addDestinationInfo } = require("./scriptHelper");
+//const { formSubmission, addDestinationInfo } = require("./scriptHelper");
 
 // Write your JavaScript code here!
-const form = document.getElementById("testForm");
 
 window.addEventListener("load", function() { 
-    
-    console.log("Hello, everyone!");
-
+    const form = document.querySelector("form");
+    let list = document.getElementById("faultyItems");
     form.addEventListener("submit", function(event) {
-       
-        
-       //validateInput(pilotInput.value, copilotInput.value, fuelLevelInput.value, cargoLevelInput.value);
-       // formSubmission(document, list, pilotInput.value, copilotInput.value, fuelLevelInput.value, cargoLevelInput.value);
+        event.preventDefault();
+        let pilotInput = document.querySelector("input[name=pilotName]");
+        let copilotInput = document.querySelector("input[name=copilotName]");
+        let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
+        let cargoLevelInput = document.querySelector("input[name=cargoMass]");
+             formSubmission(document, list, pilotInput.value, copilotInput.value, fuelLevelInput.value, cargoLevelInput.value);
     });
 });
 
@@ -25,6 +25,6 @@ window.addEventListener("load", function() {
        console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
        pickPlanet(planets);
-       addDestinationInfo(planet);
+       addDestinationInfo(planet); //revisit parameters
    })
    
