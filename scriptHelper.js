@@ -13,25 +13,25 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Distance from Earth: ${distance} </li>
                     <li>Number of Moons: ${moons} </li>
                 </ol>
-                <img src="${imageUrl}">
+                <img src = "${imageUrl}">
    `;
 }
 
 function validateInput(testInput) {
-    
+
+let numberInput = Number(testInput);
+
     if (testInput === "")  {
         return "Empty";
-     }   
+     }  
     
-    else if (isNaN(testInput)) {
+    else if (isNaN(numberInput)) {
         return "Not a Number";
      }
 
-     else if (!isNaN(testInput)) {
+     else if (isNaN(numberInput) === false) {
         return "Is a number";
      }
-
-    return;
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
@@ -45,7 +45,7 @@ if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || va
     }
 
  else if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number" || validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
-        window.alert("Please enter valid information in each field.");
+    window.alert("Please enter valid information in each field.");
     }
 
 else {
@@ -89,9 +89,9 @@ else {
 
 async function myFetch() {
     let planetsReturned;
-
+    
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        return response.json();
+            return response.json();
     });
 
     return planetsReturned;
@@ -99,8 +99,8 @@ async function myFetch() {
 
 function pickPlanet(planets) {
     let index = Math.floor(Math.random() * (planets.length));
-    let planet = planets[index];
-    return planet;
+    let chosenPlanet= planets[index];
+    return chosenPlanet;
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
