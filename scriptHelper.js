@@ -25,13 +25,15 @@ let numberInput = Number(testInput);
         return "Empty";
      }  
     
-    else if (isNaN(numberInput)) {
+     else if (isNaN((numberInput)) === false) {
+        return "Is a number";
+     }
+
+    else if (isNaN((numberInput))) {
         return "Not a Number";
      }
 
-     else if (isNaN(numberInput) === false) {
-        return "Is a number";
-     }
+     
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
