@@ -19,7 +19,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
 
-let numberInput = Number(testInput);
+let numberInput = (testInput);
 
     if (testInput === "")  {
         return "Empty";
