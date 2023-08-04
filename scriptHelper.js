@@ -82,6 +82,7 @@ else if (cargoLevel > 10000 && fuelLevel < 10000){
 }
     
 else {
+    list.style.visibility = "hidden";
     cargoStatus.innerHTML= "Cargo mass low enough for launch";
     fuelStatus.innerHTML= "Fuel level high enough for launch";
     launchStatus.style.color= "#419F6A";
