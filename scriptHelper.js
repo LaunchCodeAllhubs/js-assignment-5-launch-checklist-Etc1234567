@@ -26,7 +26,7 @@ let numberInput = Number(testInput);
      }  
     
      else if (isNaN((numberInput)) === false) {
-        return "Is a number";
+        return "Is a Number";
      }
 
     else if (isNaN((numberInput))) {
